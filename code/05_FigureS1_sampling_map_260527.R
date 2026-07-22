@@ -18,7 +18,7 @@ library(ggrepel)      # Improved label placement to avoid overlaps
 library(ggspatial)    # Scale bars and north arrows
 
 c25 = c(
-  "dodgerblue2", "#E31A1C")
+  '2019' = "dodgerblue2", '2021' = "#E31A1C")
 
 # Load the metadata table used for station locations and years
 comprehensive_data_meta = read.csv('/Users/patrickwhite/Bertrand Lab Dropbox/Bertrand Lab shared workspace/User/Patrick_White_DB/corsair_drive/Patrick_W/Transcriptomics/dab_paper_writing/review1/code/formatting_metadata/env_metadata_and_dabs_TPM_TMs_260113_filtered.csv')
@@ -48,7 +48,7 @@ make_map <- function(bounds, title = NULL, df) {
   # shapes that support fill
   shape_palette <- rep(c(21,22,23,24,25), length.out = n_yrs)
   # fill colors from existing palette (c25)
-  fill_palette <- c25[seq_len(n_yrs)]
+  fill_palette <- c25[names(c25) %in% yrs]
   shape_vals <- setNames(shape_palette, yrs)
   fill_vals  <- setNames(fill_palette, yrs)
 
